@@ -1,0 +1,223 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("IMG/bg2.png");
+        background-repeat: repeat;
+        background-size: cover;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Calculator container */
+.calculator {
+    background: none;
+    background-image: url("IMG/cal-layout.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: drop-shadow(9px 9px 15px #050200);
+    padding: 25px;
+    border-radius: 25px;
+    width: 620px;
+    height: 450px;
+    margin: 0 auto; /* centers horizontally */
+    
+}
+
+.title {
+    color: #f5f5f5;
+    font-size: 22px;
+}
+.credit{
+    position: fixed;
+    z-index: 999;
+    left: 40%;
+    top: 100%;
+    color: #ffb25b7a;
+    font-size: 12px;
+}
+/* Display row */
+.display-row {
+    display: grid;
+    grid-template-columns: 1fr 60px;
+    gap: 10px;
+    margin-top: 100px;
+    margin-left:138px;
+    margin-right: 125px;
+    margin-bottom: 20px;
+}
+
+#display {
+    height: 35px;
+    border-radius: 12px;
+    border: none;
+    background: #140805;
+    color: rgb(255, 225, 193);
+    font-size: 20px;
+    padding: 10px;
+}
+
+/* Error text */
+#error {
+    position: fixed;
+    z-index: 999;
+    left: 5%;
+    top: 24%;
+    color: #a33b0f;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 130px;
+}
+
+/* Buttons grid */
+.buttons {
+    margin-left:130px;
+    margin-right: 130px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+button {
+    height: 55px;
+    border-radius: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.15s;
+}
+
+/* ICONS */
+button img {
+    width: 40px;
+    height: 40px;
+    pointer-events: none; /* prevents image blocking clicks */
+}
+
+/* Hover + press */
+button:hover img {
+    filter: drop-shadow(0 0 8px rgba(255, 188, 117, 0.595));
+}
+
+button:active {
+    transform: scale(0.92);
+}
+
+/* Special buttons */
+.equal {
+    grid-row: span 2;   /* makes button tall */
+    height: 100%;       /* fill grid cell */
+}
+.equal img {
+    height: 100px;
+    width: 40px;
+}
+
+.help {
+    border-radius: 12px;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Result table (keep clean) */
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 900px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background: #333;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+/* Modal stays mostly same */
+.modal {
+    display: none; /* hidden by default */
+    position: fixed;
+    z-index: 999;
+    left: 95%;
+    top: 25%;
+    width: 355px;
+    height: 335px;
+
+    background: none;
+    background-image: url("IMG/info-layout.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow(4px 4px 9px #050200);
+
+    /* center content */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: none;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+    font-size: 8px;
+    border-radius: 0;
+    width: 70%;
+    max-width: 200px;
+    animation: fadeIn 0.2s ease;
+}
+.modal-content h2 {
+    margin-top: 15px;
+}
+.modal-table {
+    background: transparent;
+    border-collapse: collapse;
+}
+
+/* Remove header background */
+.modal-table th {
+    background: transparent;
+    color: #000000; /* adjust depending on your PNG */
+    border: none;
+}
+
+/* Make cells transparent */
+.modal-table td {
+    background: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+}
+
+.close {
+    float: center;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.close:hover {
+    color: #ff9a3c;
+}
+
+@keyframes fadeIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+#result {
+    margin-top: 150px;
+}

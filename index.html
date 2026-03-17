@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Truth Table Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="calculator">
+    <h1 class="title">TRUTH TABLE CALCULATOR</h1>
+
+    <div class="display-row">
+        <input type="text" id="display" readonly>
+        <button class="help" onclick="showHelp()"><img src="IMG/info.png"></button>
+    </div>
+
+    <div class="buttons">
+        <!-- Variables -->
+        <button onclick="add('P')"><img src="IMG/p.png"></button>
+        <button onclick="add('Q')"><img src="IMG/q.png"></button>
+        <button onclick="add('R')"><img src="IMG/r.png"></button>
+        <button onclick="add('S')"><img src="IMG/s.png"></button>
+        <button onclick="add('T')"><img src="IMG/t.png"></button>
+        <button class="clear" onclick="backspace()">
+            <img src="IMG/clear.png">
+        </button>
+
+        <!-- Operators -->
+        <button onclick="add('∨')"><img src="IMG/or.png"></button>
+        <button onclick="add('∧')"><img src="IMG/and.png"></button>
+        <button onclick="add('→')"><img src="IMG/implies.png"></button>
+        <button onclick="add('↔')"><img src="IMG/iff.png"></button>
+        <button onclick="add('¬')"><img src="IMG/not.png"></button>
+        <button class="equal" onclick="calculate()">
+            <img src="IMG/equal.png">
+        </button>
+
+        <!-- More operators -->
+        <button onclick="add('⊼')"><img src="IMG/nand.png"></button>
+        <button onclick="add('⊽')"><img src="IMG/nor.png"></button>
+        <button onclick="add('⇹')"><img src="IMG/xor.png"></button>
+        <button onclick="add('(')"><img src="IMG/lparen.png"></button>
+        <button onclick="add(')')"><img src="IMG/rparen.png"></button>
+
+
+        <h1 class="credit">MADE BY: JUSTIN ALARCIO</h1>
+</div>
+
+<div id="error"></div>
+
+<div id="result"></div>
+
+<div id="helpModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeHelp()">&times;</span>
+    <h2>Input Syntax</h2>
+
+    <table class="modal-table">
+      <tr><th>Operator</th><th>Symbol</th><th>Meaning</th></tr>
+      <tr><td>Negation</td><td>¬</td><td>NOT</td></tr>
+      <tr><td>Conjunction</td><td>∧</td><td>AND</td></tr>
+      <tr><td>Disjunction</td><td>∨</td><td>OR</td></tr>
+      <tr><td>Conditional</td><td>→</td><td>IF...THEN</td></tr>
+      <tr><td>Biconditional</td><td>↔</td><td>IFF</td></tr>
+      <tr><td>NAND</td><td>⊼</td><td>NOT AND</td></tr>
+      <tr><td>NOR</td><td>⊽</td><td>NOT OR</td></tr>
+      <tr><td>XOR</td><td>⇹</td><td>Exclusive OR</td></tr>
+    </table>
+  </div>
+</div>
+
+<audio id="clickSound" src="SFX/click.wav"></audio>
+<audio id="equalSound" src="SFX/beep.wav"></audio>
+<audio id="infoSound" src="SFX/scroll.m4a"></audio>
+
+<script src="script.js"></script>
+
+</body>
+</html>
