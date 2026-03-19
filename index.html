@@ -50,7 +50,19 @@
 
 <div id="error"></div>
 
-<div id="result"></div>
+<div id="resultModal" class="result-modal">
+    <div class="result-content">
+        <span class="close-result" onclick="closeResult()">&times;</span>
+
+        <h2>Truth Table Result</h2>
+
+        <div id="resultTableContainer"></div>
+
+        <button id="newExprBtn" onclick="closeResult()">
+            Solve New Expression
+        </button>
+    </div>
+</div>
 
 <div id="helpModal" class="modal">
   <div class="modal-content">

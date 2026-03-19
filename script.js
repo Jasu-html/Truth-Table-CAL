@@ -112,20 +112,22 @@ function calculate() {
     let expr = document.getElementById("display").value;
 
     let error = validateExpression(expr);
+
     if (error) {
-        document.getElementById("error").innerText = error;
+        showError(error); // ✅ correct place
         document.getElementById("result").innerHTML = "";
         return;
     }
 
-    document.getElementById("error").innerText = "";
+    // Clear error if valid input
+    document.getElementById("error").innerHTML = "";
 
     let vars = [...new Set(expr.match(/[A-Z]/g))];
     let subExprs = getSubExpressions(expr);
 
     let rows = generateRows(vars.length);
 
-    let html = "<table><tr>";
+    let html = "<table class='result-table'><tr>";
 
     // Headers
     vars.forEach(v => html += `<th>${v}</th>`);
@@ -162,7 +164,24 @@ function calculate() {
 
     html += "</table>";
 
-    document.getElementById("result").innerHTML = html;
+    document.getElementById("resultTableContainer").innerHTML = html;
+
+    // Show modal
+    let modal = document.getElementById("resultModal");
+    modal.style.display = "flex";
+}
+function closeResult() {
+    // Hide modal
+    document.getElementById("resultModal").style.display = "none";
+
+    // Clear table
+    document.getElementById("resultTableContainer").innerHTML = "";
+
+    // Enable help button again
+    document.querySelector(".help").classList.remove("disabled");
+
+    // Optional: clear input
+    document.getElementById("display").value = "";
 }
 
 function validateExpression(expr) {
@@ -197,6 +216,24 @@ function validateExpression(expr) {
     return null; // valid
 }
 
+let errorTimeout;
+
+function showError(message) {
+    let errorDiv = document.getElementById("error");
+
+    errorDiv.innerHTML = `Error: ${message}`;
+
+    // Clear previous timer
+    if (errorTimeout) {
+        clearTimeout(errorTimeout);
+    }
+
+    // Start new timer
+    errorTimeout = setTimeout(() => {
+        errorDiv.innerHTML = "";
+    }, 1500);
+}
+
 function showHelp() {
     playSound("infoSound");
     document.getElementById("helpModal").style.display = "flex";
@@ -212,5 +249,12 @@ window.onclick = function(event) {
     let modal = document.getElementById("helpModal");
     if (event.target === modal) {
         modal.style.display = "none";
+    }
+}
+
+window.onclick = function(event) {
+    let modal = document.getElementById("resultModal");
+    if (event.target === modal) {
+        closeResult();
     }
 }

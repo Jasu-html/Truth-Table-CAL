@@ -14,7 +14,7 @@ body {
     background-image: url("IMG/cal-layout.png");
         background-repeat: no-repeat;
         background-size: cover;
-        filter: drop-shadow(9px 9px 15px #050200);
+        filter: drop-shadow(10px 10px 18px #050200);
     padding: 25px;
     border-radius: 25px;
     width: 620px;
@@ -24,7 +24,9 @@ body {
 }
 
 .title {
-    color: #f5f5f5;
+     text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), /* Highlight (simulating light) */
+               0px -1px 0px rgba(0, 0, 0, 0.7); /* Shadow (simulating depth) */
+    color: #291403;
     font-size: 22px;
 }
 .credit{
@@ -63,6 +65,7 @@ body {
     left: 5%;
     top: 24%;
     color: #a33b0f;
+    font-family: "Lucida Handwriting", cursive;
     font-weight: bold;
     text-align: left;
     margin-left: 130px;
@@ -142,11 +145,11 @@ th {
 
 th, td {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ddddddb3;
 }
 
-tr:nth-child(even) {
-    background: #f5f5f5;
+.result-table tr:nth-child(even) {
+    background: #f5f5f5af;
 }
 
 /* Modal stays mostly same */
@@ -157,31 +160,41 @@ tr:nth-child(even) {
     left: 95%;
     top: 25%;
     width: 355px;
-    height: 335px;
+    height: 345px;
 
     background: none;
     background-image: url("IMG/info-layout.png");
     background-repeat: no-repeat;
     background-size: cover;
-    filter: drop-shadow(4px 4px 9px #050200);
+    transition: transform 0.3s ease-in-out;
+
 
     /* center content */
     justify-content: center;
     align-items: center;
 }
+.modal:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(1px 1px 3px #ffffff69);
+}
 
 .modal-content {
+    margin-top: -37px;
     background: none;
     color: rgb(0, 0, 0);
-    padding: 5px;
+    font-family: "Lucida Handwriting", cursive;
     font-size: 8px;
+    line-height: 75%;
     border-radius: 0;
     width: 70%;
     max-width: 200px;
     animation: fadeIn 0.2s ease;
 }
 .modal-content h2 {
-    margin-top: 15px;
+    padding-top: 15px;
+
+    color: #822500;
+    font-weight: 1000;
 }
 .modal-table {
     background: transparent;
@@ -191,7 +204,9 @@ tr:nth-child(even) {
 /* Remove header background */
 .modal-table th {
     background: transparent;
-    color: #000000; /* adjust depending on your PNG */
+    color: #822500; /* adjust depending on your PNG */
+    font-size: larger;
+    font-weight: 800;
     border: none;
 }
 
@@ -201,12 +216,16 @@ tr:nth-child(even) {
     color: rgb(0, 0, 0);
     border: none;
 }
+.modal-table tr:nth-child(even) {
+    background: transparent !important;
+}
 
 .close {
     float: center;
     font-size: 24px;
     cursor: pointer;
-    color: #ffffff;
+    color: #631c00;
+    
 }
 
 .close:hover {
@@ -218,6 +237,47 @@ tr:nth-child(even) {
     to { transform: scale(1); opacity: 1; }
 }
 
-#result {
-    margin-top: 150px;
+.result-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    margin-left: -442px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-content {
+    background: rgb(168, 123, 95);
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90%;
+    overflow: auto;
+    text-align: center;
+}
+
+.close-result {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#newExprBtn {
+    display: block;
+    margin: 20px 0 0 auto; /* pushes it to the right */
+    margin-right: 50px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    background: #291403;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
 }
